@@ -1,0 +1,738 @@
+@import '../../media';
+@import './variable';
+
+
+
+
+
+///// heer is our mixin /////////
+@mixin flex ($align, $Justy, $direction, $gap) {
+    display: flex;
+    align-items:$align;
+    justify-content: $Justy;
+     flex-direction:$direction;
+     gap:$gap;
+}
+@mixin grid ($col, $row, $gap) {
+      display: grid;
+      grid-template-columns:$col;
+      grid-template-rows: $row;
+      grid-gap: $gap ;
+}
+
+@mixin box($bg) {
+    background-color: $bg;
+    border-radius: $border-radus; 
+}
+
+@mixin text($color, $align, $line, $smline, $font,$smfont, $width){
+      text-transform:  capitalize;
+      color:$color ;
+      text-align: $align;
+      line-height: $line;
+      font-size: $font;
+      font-weight: $width;
+
+      @include respond-below(sm){ 
+        
+         font-size: $smfont ;
+         line-height: $smline;
+
+      }
+
+}
+
+@mixin btn( $width, $height, $bg, $color, $padding, $fontsize ) {
+    border: none;
+    outline: none;
+    padding: $padding;
+    font-size: $fontsize;
+    border-radius: $border-radus;
+    height: $height;
+     width: $width;
+     background-color: $bg;
+     color:$color;
+     text-transform:capitalize;
+}
+
+
+@mixin img {
+    height: auto;
+    max-width: 100%;
+    background-size: cover;
+}
+
+////////// here is our HOme secttion style start /////////
+
+
+
+.main-container{
+    background-color: $background-color;
+      height: auto;
+}
+
+.home-section{
+    margin: $body-margin;
+    @include respond-below(sm){
+        margin:$body-margin-xs;
+    }
+     @include grid(1fr, min-content ,0);
+
+     /////////////// here is hero section style//////////////////
+
+     .swiper-slide {
+         margin-top: 50px; 
+        .box{
+             width: inherit;
+            @include grid(repeat(2,1fr), 80vh,0 );
+            @include respond-below(sm){
+                @include grid(1fr, repeat(2,80vh),0 );
+            }
+            .left-box{
+                
+                @include flex(start,space-evenly ,column ,20px );
+                @include respond-below(sm){
+                    @include flex(start,space-evenly , column ,0 );
+                }
+                h1{
+                    @include text($white,start ,110% , 110% ,4vmax ,5vmax ,900 )
+                }
+                p{
+                    @include text($white,start ,100%, 130% ,1.7vmax ,3vmax ,200 )
+                }
+                button{
+                    @include btn(15vmax, 4vmax ,$indigo ,black ,10px , 1.5vmax );
+                    
+                    @include respond-below(sm){
+                        @include btn(25vmax, 7vmax ,$indigo ,black ,10px ,3vmax )
+                    }
+                }
+                    }
+                    .right-box{
+                        img{
+                            @include img
+                         }
+                    }
+         }
+      }
+      
+      
+
+////////////// here is icon sectio style //////////////
+
+       .icon-section{
+           height: 35vh;
+           margin: 10vh 0 0 0 ;
+           @include box($boxcolor1);
+           @include flex(center, space-evenly , row , 0 );
+           @include respond-below(sm){
+               @include flex(center, space-evenly , column , 0 );
+               height: 100vh;
+           }
+           .box{
+               @include flex(center, center , column , 10px );
+               h1{ 
+                @include text($white,center, 100% , 100% , 2vmax , 2.5vmax, 1000 );
+               }
+              }
+       }
+        .text{
+            margin: 10vh 0 10vh 0 ;
+            @include flex(center, center , column,30px );
+            h1{
+                @include text($white,center, 110% , 100%, 5.5vmax , 6vmax,  900 );
+                span{
+                    Color:$warning;
+                }
+            }
+            .icon-box{
+                @include flex(center, center , row, 10px);
+                @include respond-below(sm){
+                @include flex(center, center , column, 20px);
+                }
+            }
+        }
+}
+
+
+//////////// here is review box secton style //////////
+
+.review-section{
+      height: 150vh;
+     margin-bottom: 20px;
+    @include grid( repeat(2,1fr) , repeat(5,13%), 7% );
+     grid-template-areas:
+       "left top"
+       "left top"
+       "left down"
+       "left down"
+       "left down"
+     ;
+     @include respond-below(sm){
+        @include grid(1fr , repeat(4,25%), 3% );
+       height: calc(100vh * 3);
+        grid-template-areas:
+        "top "
+        "left "
+        "left "
+        "down "
+   
+      ;
+      margin-bottom: 150px;
+     }
+
+     
+    //  @include respond-between(xs, lg){
+    //      height: 115vh;
+    //  }
+    //  @include respond-between(sm, m){
+    //     height: calc(120vh * 3) ;
+    //  }
+
+    .left-box{
+      grid-area: left;
+       
+        @include box($boxcolor1);
+        @include flex(center, space-between , column ,10px );
+          h1{
+            @include text($white,center, 150% , 110%, 2vmax , 3vmax,  800 );
+          }
+        img{
+            @include img;
+        }
+           
+    }
+    .top-box{
+        padding: 5%;
+        grid-area: top;
+        @include box($boxcolor1);
+        @include flex(start, space-between , column ,10px );
+        @include respond-below(sm){
+            @include flex(start, center , column ,20px );
+
+        }
+          h1{
+            @include text($white,start, 100% , 110%, 2.5vmax , 5vmax,  800 );
+          }
+        img{
+            @include img;
+        }
+
+        p{
+            @include text($white,start, 150% , 110%, 1.5vmax , 3vmax,  100 );
+           
+        }
+
+    }
+    .down-box{
+        
+        @include box($pink);
+        grid-area: down;
+        @include flex(start, space-between , column ,10px );
+        @include respond-below(sm){
+            @include flex(start,space-evenly , column ,20px );
+
+        }
+         .box{
+            @include flex(start, space-evenly , row ,10px );
+            padding: 7% 0 0 5%;
+          
+         }
+          h1{
+            @include text($white,start, 100% , 120%, 2.5vmax , 3vmax,  800 );
+           
+          }
+        img{
+            @include img;
+        }
+
+        p{
+            @include text($white,start, 150% , 130%, 1.5vmax , 2.2vmax,  100 );
+           
+        }
+
+        img{
+            @include img;
+        }
+    
+    }
+}
+
+
+
+
+.guide-section{
+    
+    height: 50vh;
+    @include flex(center,center, column ,20px );
+    h1{
+        @include text($white,center ,110% , 110% ,4vmax ,4vmax ,900 );
+        span{
+            color: $red;
+        }
+    }
+    .btn{
+         @include flex(center,center, row ,20px );
+         @include respond-below(sm){
+
+             @include flex(center,center, column ,20px );
+         }
+
+         button{
+            @include btn(15vmax, 4vmax ,$indigo ,black ,10px , 1.5vmax );
+                    
+            @include respond-below(sm){
+                @include btn(25vmax, 7vmax ,$indigo ,black ,10px ,2.5vmax )
+            }
+         }
+
+     }
+     
+}
+
+
+.course-section{
+    @include box($boxcolor1);
+    height: 50vh;
+    margin-bottom: 200px;
+    @include flex(center,center, row ,20px );
+    @include respond-below(md){
+
+        @include flex(center,center, column ,20px );
+    }
+    .left{
+      
+     
+      height: 100%;
+      width: 40%;
+      padding: 2%;
+      @include flex(center,center, column ,0 );
+       img{
+           @include img;
+       }
+      @include respond-below(md){
+        width: 100%;
+           
+       }
+          
+       
+       
+    }
+
+    .right{
+       height: 100%;
+       width: 60%;
+       padding: 2%;
+        
+       
+         img{
+             @include img;
+         }
+
+        @include flex(start,space-between,column ,0 );
+     
+        h1{
+            @include text($white,start, 110% , 120%, 2.5vmax , 3vmax,  800 );
+           
+          }
+          h3{
+            @include text(black,start, 110% , 120%, 1vmax , 1.5vmax,  100 );
+          }
+          p{
+            @include text($white,start, 110% , 120%, 1.5vmax , 2vmax,  100 );
+          }
+
+        .box1{
+            height: 10vh;
+            @include flex(space-between,center, row ,50px );
+            
+           
+            
+
+            .box{
+                height: inherit;
+                @include flex(center,center, row ,10px );
+                @include respond-below(md){
+                    @include flex(center,center, row ,0);
+                    
+                }
+              
+                .text{
+                    height: inherit;
+                    @include flex(start,center, column ,10px );
+                    @include respond-below(md){
+                        display: none
+                    }
+                    
+                }
+                h3{
+                    @include text($white,start, 100% , 100%, 2vmax , 1vmax,  800 );
+                  }
+                 
+            }
+        }
+     
+        .box2{
+           width: 100%;
+            @include flex(space-between,start, row ,50px);
+            @include respond-below(sm){
+        
+                @include flex(center,center, column ,10px );
+            }
+            .box{
+                @include flex(center,center, row ,10px );
+                background-color: white;
+                padding: 1%;
+                font-size: 1vmax;
+                border-radius: 20px;
+                width: 150px;
+            }
+        }
+
+
+    @include respond-below(md){
+     width: 100%;
+
+    }
+       
+    }
+
+
+    @include respond-below(md){
+        height: 100vh;
+
+    }
+}
+
+
+
+//////// here is our support section style .////////////
+
+.support-section{
+      
+      height: 80vh;
+      @include grid(repeat(2,1fr), 100%, 30px );
+      @include respond-below(md){
+          
+          @include grid(1fr,  repeat( 2, 80vh), 10px );
+          height:auto;
+
+      }
+
+      .left{
+          padding: 10%;
+          background-color: red;
+           @include box($indigo);
+           @include flex(start,center, column ,50px);
+           @include respond-below(sm){
+       
+               @include flex(center,center, column ,10px );
+           }
+
+           .imgbox{
+            @include flex(space-evenly, center, row ,100px);
+            @include respond-below(sm){
+        
+                @include flex(center,center, column ,10px );
+            }
+            img{
+                @include img;
+            }
+           }
+
+
+            p{
+           
+                    @include text($white,start, 150% , 100%, 3vmax , 4vmax,  100 );
+                  
+            }
+            
+            
+          
+      }
+
+      .right{
+          padding: 30px;
+          background-color: blue;
+          @include box($warning);
+          @include flex(start,center, column ,50px);
+          @include respond-below(sm){
+      
+              @include flex(center,center, column ,10px );
+          }
+
+          h1{
+            @include text($white,start, 150% , 100%, 2.5vmax , 4vmax,  100 );
+          }
+
+          p{
+           
+            @include text($white,start, 150% , 100%, 2vmax , 3vmax,  100 );
+          
+        }
+
+           .mySwiper{
+             height: 50vh;
+             width: 40vw;
+             border-radius: $border-radus;
+             @include respond-below(md){
+                 width: 65vw;
+             }
+
+             img{
+                 @include img;
+             }
+           }
+      }
+      
+       
+        
+}
+
+
+
+////  here is text found ////@at-root
+
+
+.text-find{
+    height: 30vh;
+   margin-top: 10%;
+    @include flex(center,center, column ,50px);
+    button{
+        @include btn(15vmax, 4vmax ,$indigo ,black ,10px , 1.5vmax );
+                
+        @include respond-below(sm){
+            @include btn(25vmax, 7vmax ,$indigo ,black ,10px ,2.5vmax )
+        }
+     }
+
+      
+     h1{
+        @include text($white,center, 150% , 100%, 4vmax , 4vmax,  800 );
+      }
+
+}
+  
+
+//// here is fing section style ////@at-root
+
+
+
+.find{
+    margin-top: 100px;
+    height: 80vh;
+    @include grid(repeat(2,1fr), repeat(2, calc(70vh / 2 - 30px)), 30px );
+    @include respond-below(md){
+        
+        @include grid(1fr, repeat(3, calc(150vh / 2 - 30px)), 30px );
+
+        height:auto; 
+
+        
+    grid-template-areas:
+     "right"
+    "top "
+    "down"
+ ;
+
+    }
+
+    grid-template-areas:
+       "top right"
+       "down right"
+    ;
+
+
+    div{
+         padding: 20px;
+         @include box($boxcolor1);
+         img{
+             @include img;
+         }
+         @include flex(start,center, row ,50px);
+         @include respond-below(sm){
+     
+             @include flex(center,center, column ,10px );
+         }
+
+         .txtbox{
+            @include flex(start,center, column,10px);
+            
+      
+     h1{
+        @include text($white,start, 100% , 100%, 2vmax , 4vmax,  800 );
+      }
+     p{
+        @include text($white,start, 150% , 100%, 1.2vmax , 3vmax,  100 );
+      }
+         }
+
+    &:nth-child(1){
+
+     
+        grid-area: top;
+    }
+    &:nth-child(2){
+      
+      
+        grid-area: down;
+
+    }
+    &:nth-child(3){
+      
+      
+        grid-area: right;
+        @include flex(start,space-evenly, column,10px);
+
+    }
+
+}
+}
+ 
+  .text{
+   
+        @include text($white,center, 100% , 100%, 5vmax , 4vmax,  800 );
+      
+  }
+
+
+  .job-section{
+      height: 100vh;
+    @include flex(start,space-between, row ,50px);
+    @include respond-below(sm){
+
+        @include flex(center,space-between, column ,10px );
+        height:calc(80vh * 3); 
+    }
+
+      .right{
+          height: inherit;
+           width: 70%;
+         
+        @include grid(repeat(2,1fr), repeat(7,20vh), 30px );
+          @include respond-below(md){
+              
+              @include grid(1fr,50vh 50vh 50vh, 30px );
+      
+             width: 100%
+
+      
+          }
+
+
+       
+
+          div{
+            @include flex(center,center, column ,5px);
+            @include respond-below(sm){
+        
+                @include flex(center,center, column ,10px );
+            }
+            h1{
+                @include text($white,center, 100% , 100%, 3vmax , 4vmax,  800 );
+               
+      
+            }
+
+            img{
+                @include img;
+            }
+
+            p{
+                    
+                @include text($white,center, 100% , 100%, 1.5vmax , 4vmax,  100 );
+            }
+
+              @include box($boxcolor1);
+           
+               &:nth-child(1){
+                   grid-area:2/1/4/2 ;
+                   @include respond-below(md){
+                       grid-area:1/1/2/2 ;
+
+                   }
+               }
+               &:nth-child(2){
+                grid-area:1/2/3/3 ;
+                @include respond-below(md){
+                    grid-area:2/1/3/2 ;
+
+                }
+               }
+               &:nth-child(3){
+                grid-area:3/2/5/3 ;
+                @include respond-below(md){
+                    grid-area:3/1/4/2 ;
+
+                }
+               }
+          }
+
+
+
+      }
+      .left{
+          height: inherit;
+          width: 30%;
+          @include flex(center,center, column ,5px);
+          img{
+              @include img;
+          }
+          @include respond-below(md){
+              width: 100%;
+              height: 70vh;
+          }
+      }
+
+  }
+
+  ////// here footer style /////@at-root
+
+
+  .footer{
+        
+    height: 50vh;
+    margin-bottom: 10px;
+    border-top: 2px solid $white;
+    @include flex(center,space-between, row ,50px);
+    @include respond-below(sm){
+
+        @include flex(center,space-between, column ,10px );
+        
+    }
+
+     .left{
+         div{
+             height: 50px;
+            @include flex(center,start, row ,10px);
+            p{
+                    
+                @include text($white,start, 100% , 100%, 1.5vmax , 2vmax,  100 );
+            
+            }
+
+            span{
+                @include text($white,start, 100% , 100%, 1.5vmax , 4vmax,  100 );
+            }
+         }
+     }
+
+     .right{
+        @include flex(start,start, column ,30px);
+
+        h1{
+            @include text($white,start, 100% , 100%, 4vmax , 4vmax,  100 );
+        }
+        svg{
+            @include text($white,start, 100% , 100%, 1.5vmax , 4vmax,  100 );
+        }
+
+        div{
+            @include flex(start,start, row ,30px);
+        }
+
+     }
+
+     
+
+  }

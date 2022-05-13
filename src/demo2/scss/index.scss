@@ -1,0 +1,907 @@
+@import '../../media';
+@import'./_variable.scss';
+
+*{
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+     font-family: $font-family-sans-serif;
+     
+}
+
+@mixin btn ($height, $whitdh,) {
+    outline: none;
+    border: none;
+    height: $height;
+    width: $whitdh;
+  
+    background-color: $primary;
+    border-radius: $border-radus;
+    color: white;
+    font-size: 100%;
+}
+
+
+.navbar{
+    transition: all 1s;
+   border-bottom: 2px white;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+position: relative;
+position: fixed;
+z-index: 2;
+top: 0;
+}
+
+
+.mobilenav{
+    display: none;
+    transition: all 1s;
+ 
+    @include respond-below(sm){
+        display: flex;
+    }
+
+    
+    .humburger{
+        position: absolute;
+        right: 10px;
+        top: 15px;
+        transition: all 1s;
+    }
+
+}
+
+.normalnav{
+
+
+    @include respond-below(sm){
+        display: none;
+    }
+}
+
+
+
+
+ul{
+    display: flex;
+    align-items: center;
+  width: 100%;
+  
+  
+  @include respond-below(sm){
+      
+      flex-direction: column;
+       position: absolute;
+        left: 0;
+       top: 70px;
+       border-top: 2px solid white;
+       background-color:  #0f0826;
+       width: 100%;
+       position: fixed;
+       z-index: 3;
+       height: 250px;
+       transition: all 1s;
+     
+  }
+  justify-content: center;
+  
+
+  li{
+      list-style-type: none;
+      margin: 20px;
+   
+      @include respond-below(sm){
+          margin: 10px;
+          
+      }
+      a{
+          text-decoration: none;
+           text-transform: uppercase;
+           color: white;
+            font-size: 2vmax;
+            @include respond-below(sm){
+                font-size: 3vmax;
+            }
+            
+      }
+
+      .active{
+          color: green;
+      }
+  }
+
+}
+
+/// here is mixin create
+
+
+
+@mixin flex ($align, $just) {
+     display: flex;
+     align-items: $align;
+     justify-content: $just;
+}
+
+
+
+
+
+
+html, body {
+    display: block;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
+    width: 100%;
+}
+body {
+    font-family: "Poppins", sans-serif;
+    font-weight: normal;
+    font-style: normal;
+   
+}
+
+
+////// start laout system
+
+//// here is home component
+
+
+
+
+
+.main-homepage{
+    background-color: #0f0826;
+      margin: 7.3%;
+      @include respond-below(sm){
+        margin: 3%;
+   }
+    display: grid;
+    grid-gap: 100px;
+    grid-template-columns: repeat(1fr);
+ grid-template-rows: 80vh auto auto auto auto auto 100vh;
+ 
+ 
+ @include respond-below(sm){
+     
+     grid-template-rows: 150vh ;
+}
+
+ /// here is hero section style
+
+.hero{
+   
+
+    
+
+
+    .hero-box{
+        height: 100%;
+        width: 100%;
+
+          
+        display: grid;
+        grid-template-columns: repeat(2,1fr) ;
+        grid-template-rows: 80vh;
+        
+         
+     
+    @include respond-below(sm){
+         grid-template-columns: 1fr;
+         grid-template-rows: 100vh;
+    }
+
+
+        .hero-left{
+            background-color: #0f0826;
+
+            @include flex(center,center);
+            color: $white;
+          
+            flex-wrap: wrap;
+          
+            height: 100%;
+            flex-direction: column;
+            position: relative;
+
+            .textbox11{
+
+                 
+            
+
+            h2{
+                 font-size: 3.3vmax;
+                 @include respond-below(sm){
+                     font-size: 5vmax;
+                     text-align:justify;
+                 }
+                 
+                 text-align:  start;
+                  text-transform: uppercase;  
+            }
+            p{
+                text-transform: capitalize;
+                text-align: start;
+                line-height: 35px;
+                margin-bottom: 10px;
+                font-size: 1.3vmax;
+                @include respond-below(sm){
+                    font-size: 2.4vmax;
+                    line-height: 30px;
+                    
+                }
+            }
+           
+        }
+        button{
+          @include btn(60px,200px );
+            position: absolute;
+         bottom: 4%;
+         left: 2%;
+           
+
+        }
+        }
+
+        .hero-right{
+            background-color: #0f0826;
+            @include flex(center,center);
+            
+                img{
+                    width: 100%;
+                    height: 100%;
+                    padding: 10%;
+                }
+            
+        }
+
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//here is icon section style
+
+
+.icon-section{
+   
+
+    .icon-box1{
+        background-color: $boxcolor1;
+        height: 30vh;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: $border-radus;
+        justify-content: space-evenly;
+        @include respond-below(sm){
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        .iconbox{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            
+
+
+            img{
+                
+            }
+
+            h3{
+                color: $white;
+                font-size: 15px;
+                line-height: 35px;
+                text-transform: uppercase;
+                text-align: center;
+              
+            }
+        }
+      
+        
+    }
+
+    .text-box1{
+        
+        height: 50vh;
+        margin-bottom: 5%;
+
+         @include flex(center, center );
+         flex-direction:column;
+         gap: 20%;
+         @include respond-below(sm){
+             height: 70vh;
+         }
+         h1{
+             font-size: 5vmax;
+             text-align: center;
+             color: $white;
+             span{
+                 color: $warning;
+             }
+
+         }
+ 
+         .iconbox{
+             display: flex;
+             align-items: center;
+             justify-content: center;
+             img{
+                 padding: 10px;
+                 object-fit: cover;
+                
+             }
+             @include respond-below(sm){
+                flex-direction: column;
+            }
+         }
+    }
+
+    .grid-box1{
+         
+        display: grid;
+        
+        grid-template-columns: repeat(2,1fr);
+         grid-template-rows: 1fr 1fr;
+         grid-template-areas: 
+           "left top"
+           "left down"
+         ;
+         @include respond-below(sm){
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr 1fr 1fr;
+            grid-template-areas: 
+            "left"
+            "top"
+            "down"
+            ;
+            margin-bottom: 400px;
+          grid-gap: 30px;
+          height: 250vh;
+       }
+         
+        grid-gap: 100px;
+        .grid-left{
+             height: 160vh;
+            background-color: $boxcolor1;
+            grid-area: left;
+     
+             display: flex;
+             align-items: center;
+             justify-content: center;
+             flex-direction: column;
+             border-radius: $border-radus;
+             gap: 10px;
+             
+             h3{
+                 color: $white;
+                 font-size: 2vmax;
+                 text-align: center;
+             }
+
+             img{
+                 height: 80%;
+                  width: 80%;
+                  object-fit: cover;
+             }
+
+
+        }
+
+        .grid-r-top{
+            height: calc(160vh / 2);
+            background-color: $boxcolor1;
+            grid-area: top;
+             @include flex(center,center );
+             padding: 30px;
+               color: $white;
+               border-radius: $border-radus;
+                h3{
+                    font-size: 3.5vmax;
+                    @include respond-below(sm){
+                        
+                        font-size: 5vmax;
+                  }
+                }
+                p{
+                    font-size: 1.5vmax;
+                    @include respond-below(sm){
+                        
+                        font-size: 3vmax;
+                  }
+                }
+               
+                img{
+                    height: 100%;
+                    width: 100%;
+                    object-fit: cover;
+                }
+            
+        }
+
+        .grid-r-down{
+            background-color: $danger;
+            grid-area: down;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            border-radius: $border-radus;
+            padding: 20px;
+            padding-bottom: 0;
+            .icon{
+                width: 100px;
+                height: 100px;
+            }
+               
+              .text{
+                  display: flex;
+                  align-items:flex-start;
+                color: $white;
+                gap: 10px;
+                  h1{
+                      font-size: 3.3vmax;
+                      @include respond-below(sm){
+                        
+                        font-size: 4vmax;
+                  }
+                  }
+                  p{
+                      font-size: 1.5vmax;
+                      @include respond-below(sm){
+                        
+                        font-size: 3vmax;
+                  }
+                  }
+              }
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            
+        }
+
+    }
+     
+
+
+}
+
+
+
+
+
+
+
+
+
+// here is lear-section style
+
+.learn-section{
+ 
+     
+
+    .text-box2{
+
+        height: 40vh;
+        @include flex(center,center );
+        gap: 20px;
+        flex-direction: column;
+        
+        @include respond-below(sm){
+            flex-direction: column;
+            
+            margin-top: 20rem;
+        }
+         h1{
+              font-size: 5vmax;
+             color: $white;
+             text-align: center; 
+             span{
+                 color: $red;
+             }
+         }
+
+         .btn{
+
+         display: flex;
+         align-items: center;
+         justify-content: center;  
+         gap: 10px;  
+             button{
+                 text-transform: uppercase;
+                 &:nth-child(1){
+                     @include btn(60px,200px )
+                 }
+                 &:nth-child(2){
+                     @include btn(60px,150px )
+                 }
+            }
+        }
+        
+    }
+    .item-box2{
+       background-color: $boxcolor1;
+       border-radius: $border-radus;
+        height: 60vh;
+        padding: 10px;
+
+        @include flex(center, center );
+         gap: 40px;
+         color: $white;
+     
+        
+         text-transform: capitalize;
+         @include respond-below(sm){
+             flex-direction: column;
+             height: 150vh;
+         }
+
+        
+        .maindiv{
+           
+            height: 100vh;
+        
+            display: flex;
+             flex-direction: column;
+             align-items: center;
+             justify-content: center;
+             gap: 22px;
+            
+
+             h1{
+                 font-size: 2.4vmax;
+             }
+
+
+            .icondiv{
+                display: flex;
+                justify-content: start;
+                align-items: center;
+                gap: 120px;
+                     
+                @include respond-below(sm){
+                    gap: 10px;   
+                    flex-direction: column
+                  }
+                   
+               
+                .box{
+                    @include flex(center,center);
+                    gap: 7px;
+               
+                    
+                }
+            }
+
+            .icondiv2{
+                display: flex;
+                justify-content: flex-start;
+                align-items: flex-start;
+                gap: 15px;
+                @include respond-below(sm){
+                    gap: 10px;   
+                    flex-direction: column
+                  }
+                   
+                 
+                .box{
+                    @include flex(center,center);
+                    background-color: $white;
+                    color: black;
+                    padding: 10px;
+                    border-radius: $border-radus;
+                    
+                }
+            }
+        }
+    }
+
+}
+
+
+
+
+
+
+
+
+//here is complete section style
+.complete-section{
+    background-color: red; 
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: 70vh;
+    grid-template-areas: "left right";
+    grid-gap: 20px;
+    @include respond-below(sm){
+        height: 140vh;
+    }
+    
+    @include respond-below(sm){
+        grid-template-columns: 1fr;
+
+        grid-template-areas:
+         "left"
+        " right"
+        ;
+
+    }
+    
+
+
+     .left{
+         background-color: yellow;
+         grid-area: left;
+        }
+        .right{
+            background-color: gray;
+            grid-area: right;
+     }
+
+}
+
+//here is box section style
+
+.box-section{
+    background-color: rebeccapurple;
+     
+    .text-box3{
+        background-color: lawngreen;
+        height: 20vh;
+    }
+    .grid-box3{
+        background-color: antiquewhite;
+        height: 60vh;
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        grid-template-rows: 1fr 1fr;
+        grid-gap: 20px;
+        grid-template-areas: 
+        
+          "top right"
+          "down right"
+        ;
+
+        @include respond-below(sm){
+            height: 80vh;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr 1fr 1fr;
+            grid-template-areas: 
+        
+            " right"
+            "top"
+            "down"
+          ;
+
+        }
+
+        .left-top{
+            background-color: red;
+            grid-area: top;
+        }
+        .left-down{
+            background-color: aqua;
+            grid-area: down;
+        }
+        .right{
+            background-color: bisque;
+            grid-area: right;
+        }
+    }
+
+
+}
+
+// here is find-section style
+
+.find-section{
+    background-color: red;
+    
+    .grid-box4{
+         
+        height: 120vh;
+         display: grid;
+         grid-template-columns: repeat(2,1fr);
+         
+         @include respond-below(sm){
+             height: 200vh;
+             grid-template-columns: 1fr;
+         }
+         
+        .left{
+            background-color:  orange;
+            height: 100%;
+            
+        }
+        .right{
+            background-color:   rgb(78, 65, 61);
+            height: 100%;
+
+            display: flex;
+            flex-direction:  column;
+            gap: 15px;
+              
+
+            div{
+                height: 50%;
+                width: 50%;
+                
+              
+                &:nth-child(1){
+                 background-color: red;
+                 align-self: flex-end;
+                 
+              
+                
+                }
+                &:nth-child(2){
+                 background-color:  green;
+               
+                   
+                }
+                &:nth-child(3){
+                    background-color:  lightcoral;
+                    align-self: flex-end;
+                   
+                }
+            }
+
+        }
+    }
+}
+.job-section{
+    background-color: rebeccapurple;
+     
+}
+.footer{
+    display: grid;
+    background-color: red;
+   grid-template-columns: repeat(12,1fr);
+   grid-template-rows: repeat(3, calc(100vh / 3 ));
+     
+     
+
+   
+
+     .sample{
+         background-color: greenyellow;
+        grid-area: 2/1/4/10;
+         
+           
+          
+     }
+      
+
+}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/// here is swiper system takel
+
+
+
+.swiper{
+       
+     
+  }
+  
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+
+    
+  
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+  }
+  
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+
+
+
+  ///// /////////////////////// here is about page design ////////////////
+
+  .about{
+         height: 100%;
+
+        
+        
+
+        .about-text{
+            background-color: white;
+            height: 20vh;
+            margin: 7.3%;
+            h1{
+                text-align: center;
+            }
+            @include respond-below(sm){
+               margin: 3%;
+               margin-top: 100px;
+
+            }
+        }
+
+        .about-grid{
+         
+            margin: 7.3%;
+              grid-gap: 20px;
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            grid-auto-rows: 40vh;
+            @include respond-below(sm){
+                grid-template-columns: 1fr;
+                margin: 3%;
+            }
+              
+            .aboutbox{
+                background-color: yellow;
+            }
+        }
+  }

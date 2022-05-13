@@ -1,0 +1,154 @@
+@import '../media';
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+.mainhome{
+     
+     background-color: #212428;
+   
+   
+    height: min-content;
+    div:nth-child(1){
+        
+        padding: 10px;
+        
+        border-bottom: 1px solid rgb(84, 83, 83);
+        
+        h1{
+            text-align: center;
+             color: rgba(255, 255, 255, 0.628);
+             text-transform: capitalize;
+             font-size: 2vmax;
+             background-color: transparent;
+            
+              
+        }
+
+    }
+
+    .grid{
+        
+         
+         height: 70vh;;
+         padding: 5%;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: 20vmax;
+        
+        grid-gap: 10px;
+        
+        @include respond-below(sm){
+            grid-template-columns: repeat(1, 1fr);
+            grid-auto-rows: 30vmax;
+          }
+
+          .box1{
+              border-radius: 15px;
+              transition: all 0.5s;
+              text-decoration: none;
+              position: relative;
+              box-shadow: 0px 1px 9px 1px #0a0a0a ;
+             
+              div{
+
+                  background-color: rgba(0, 0, 0, 0.474);
+                  border-radius:   15px 15px 0 0 ;
+                  position: absolute;
+                  width: 100%;
+                   
+                  
+                  
+                  h1{
+                      color: white;
+                      
+                    }
+                }
+
+              &:hover{
+                  transform: translateY(-10px);
+                  box-shadow: 0 10px 10px 1px rgba(0, 0, 0, 0.371);
+              }
+
+              img{
+                  height: 100%;
+                  width: 100%;
+                  object-fit:  cover;
+                  border-radius:   15px  ;
+                 
+              }
+          }
+
+          
+
+         
+    }
+
+    h1{
+        color: white;
+        text-align: center;
+        font-size: 3vmax;
+    }
+
+
+    .myprofile{
+     
+       height: 60vh;
+     
+      h1{
+          color: black;
+          text-transform: uppercase;
+      }
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        p{
+            color: white;
+        }
+        svg{
+            font-size: 2vmax;
+            color: white;
+            transition: all .5s ;
+            &:hover{
+                transform: scale(1.1);
+            }
+        }
+
+        .wep{
+            background-color: rgb(8, 8, 8);
+            height: 50vh;
+            width: 30vw;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 10px;
+            transition: all .5s ;
+            
+        @include respond-below(sm){
+            width: 100%;
+        }
+            &:hover{
+                transform: scale(1.1);
+                box-shadow: 0 0 0 10px white;
+            }
+    
+
+            .imgbox{
+background-color:white;
+border-radius: 100%;
+img{
+    object-fit: cover;
+    border-radius: 100%;
+}
+            }
+        }
+    }
+
+}
